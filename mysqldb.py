@@ -1,26 +1,20 @@
-import MySQLdb
-import json
+from flask import *
+import pymysql.cursors
+
+pymysql.install_as_MySQLdb()
+app = Flask(__name__)
+
+cursor = pymysql.connect(host="localhost", user="root", db="lamplecture_homework").cursor()
+cursor.execute(
+    'SELECT * FROM users;')
+data = cursor.fetchall()
 
 
-conn = MySQLdb.connect(
-user='root',
-# passwd='root',
-host='localhost',
-db='lamplecture_homework')
+@app.route("/")
+def index():
+    return jsonify({cursor.description[i][0]: data[0][i]
+                    for i in range(0, len(data[0]))})
 
 
-#usersテーブル
-query = "SELECT * FROM users"
-
-cursor = conn.cursor(MySQLdb.cursors.DictCursor)
-cursor.execute(query)
-data = cursor.fetchone()
-conn.close()
-print(json.dumps(data, indent=4))
-
-# {
-#     "id": 1,
-#     "name": "Akiho Iwata",
-#     "KG": "d-hacks",
-#     "login_name": "akiho"
-# }
+if __name__ == "__main__":
+    app.run(port=8000)
