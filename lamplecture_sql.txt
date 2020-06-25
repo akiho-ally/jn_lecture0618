@@ -1,0 +1,15 @@
+mysql> use lamplecture_homework;
+Database changed
+mysql> create table users( id int not null primary key auto_increment, name varchar(255),KG varchar(255),login_name varchar(255));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into users(name,KG,login_name) values('Akiho Iwata','d-hacks', 'akiho');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from users;
++----+-------------+---------+------------+
+| id | name        | KG      | login_name |
++----+-------------+---------+------------+
+|  1 | Akiho Iwata | d-hacks | akiho      |
++----+-------------+---------+------------+
+1 row in set (0.00 sec)
