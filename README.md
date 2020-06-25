@@ -3,8 +3,10 @@
 ## データベースの作成
 lamplecture_sql.txt
 
-## データベースの取得
-mysqldb.py
+## Run mysqldb.py
 
-## サーバーを立ち上げる
-lamplecture.py
+## 実行結果
+{"KG":"d-hacks","id":1,"login_name":"akiho","name":"Akiho Iwata"}
+
+
+
